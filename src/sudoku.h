@@ -1,6 +1,8 @@
 #pragma once
 
 #include <stdbool.h>
+#include <stdlib.h>
+
 
 #define BOARD_SIZE 9
 
@@ -29,6 +31,7 @@ struct SudokuBoard_impl
                        BOARD_SIZE]; // solved cell pointers (maximum)
 };
 
+
 typedef struct SudokuBoard_impl SudokuBoard;
 
 void init_sudoku(SudokuBoard *p_board);
@@ -43,6 +46,9 @@ void unset_candidate(Cell *cell, int value);
 void set_candidates(Cell *cell, int *candidates, int size);
 int *get_candidates(Cell *cell);
 
+bool is_candidate(Cell *cell, int value);
+
 int check_solved_cells(SudokuBoard *p_board, Cell ***p_solved_cells);
 bool show_possible(SudokuBoard *p_board, Cell **p_solved_cells, int counter);
 void free_sudoku(SudokuBoard *p_board);
+
